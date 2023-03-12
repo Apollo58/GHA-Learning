@@ -30,7 +30,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with: 
           name: dist-files
-          payh: dist
+          path: dist
 #          path: |
 #            dist
 #            package.json
