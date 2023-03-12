@@ -1,8 +1,9 @@
 name: Deploy website
-on:
-  push:
-    branches:
-      - main
+#on:
+#  push:
+#    branches:
+#      - main
+on: [workflow_dispatch]
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -25,6 +26,13 @@ jobs:
         run: npm ci
       - name: Build website
         run: npm run build
+      - name: Upload artifacts
+        uses: actions/upload-atrifact@v3
+        with: 
+          name: dist-files
+          path: |
+            dist
+            package.json
   deploy:
     needs: build
     runs-on: ubuntu-latest
